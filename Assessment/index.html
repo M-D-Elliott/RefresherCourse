@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!-- Created By: Marcus Elliott;
+Created On: 9/12/2019 2:05 P.M. C.S.T.
+Updated On: 9/12/2019 2:05 P.M. C.S.T. -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Todo List!</title>
+    <!-- Bootstrap CDN copied from https://getbootstrap.com/docs/4.1/getting-started/introduction/ -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="styles/styles.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Sriracha&display=swap" rel="stylesheet">
+  </head>
+
+  <body onload="init()">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-center text-center">
+          <header>
+            <h1 id="pageTitle">Todo List</h1>
+          </header>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-8 col-center">
+          <form name="todo-form"
+                onsubmit="validateTodo(); return false;"
+                onreset="resetForm(); return false;" id="todo-form">
+
+            <label for="#task" required="required">Task </label>
+            <br />
+            <input type="search" class="form-control" id="task" value="" required />
+            <br />
+
+            <label for="#date" required="required">Deadline Date </label>
+            <br />
+            <input oninput="setDaysFieldByDate(this.valueAsDate);"
+                   type="date" class="form-control"
+                   id="date" value="1954-05-07" required />
+            <br />
+
+            <p>--OR--</p>
+
+            <label for="#days" required="required">Deadline Days </label>
+            <br />
+            <input oninput="setDateFieldByDays(this.value);"
+                   type="number" class="form-control"
+                   id="days" value="0" required />
+
+            <button type="submit" id="submitButton"
+                    class="btn btn-primary right-align" form="todo-form">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="div-line"></div>
+      <div class="row">
+        <div id="todo-list" class="col-10 col-md-12 col-center">
+          <div id="todo-template" class="todo todo-standard">
+            <p>
+              <span class="todo-task">Test</span>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <span onclick="return closeThisElementParent(this, '.todo');"
+                    class="close vertical-center noselect">
+                    &#10006;
+              </span>
+            </p>
+            <p><span class="todo-days">1 day</span></p>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <!-- CDN links copied from https://getbootstrap.com/docs/4.1/getting-started/introduction/ -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="scripts/script.js"></script>
+  </body>
+</html>
