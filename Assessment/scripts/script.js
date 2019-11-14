@@ -1,9 +1,7 @@
 // initializes app by creating base todo.
 function init() {
-  addTodo("Test", 1);
-  addTodo("test2", 6);
-  addTodo("test2", 9);
-  resetForm();
+  addTodo("Set up some todos!", randomIntFromInterval(0, 7));
+  resetTodoForm();
 }
 
 // ****app functions****
@@ -34,13 +32,13 @@ function clearErrors(form) {
     }
 }
 
-function resetForm() {
+function resetTodoForm() {
     const form = getTodoForm();
     clearErrors(form);
     const task_field = form["task"];
     const date_field = form["date"];
-    // let days_field = form["days"];
-    // resetPositiveIntegerField(days_field);
+    let days_field = form["days"];
+    resetPositiveIntegerField(days_field);
     date_field.value = dateToString(today());
     task_field.focus();
 }
@@ -78,8 +76,7 @@ function validateTodo() {
   }
 }
 
-// *******validation functions *******
-
+// *******validation helper functions *******
 function validatePositiveIntegerField(field, nameOfField) {
     var value = parseInt(field.value);
     if (field.value === "" || isNaN(field.value)) {
@@ -129,6 +126,10 @@ function daysBetweenNowAnd(date) {
 function addDays(dateObj, numDays) {
   dateObj.setDate(dateObj.getDate() + numDays);
   return dateObj;
+}
+
+function randomIntFromInterval(min, max) { // min and max included
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 function capitalizeFirstLetter(string)
